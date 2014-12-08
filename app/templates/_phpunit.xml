@@ -1,0 +1,36 @@
+<!-- These configs are not always respected when running the CI sonar job -->
+<!-- sonar-php is an opinionated plugin. Some of these configs mirror that plugin -->
+<!-- due to its restrictions -->
+<phpunit bootstrap="./vendor/autoload.php" backupGlobals='true' strict="true">
+<testsuites>
+    <testsuite name="IntegrationTests">
+        <directory suffix="IntegrationTest.php" phpVersion="5.4.11" phpVersionOperator=">=">php/tests</directory>
+    </testsuite>
+</testsuites>
+
+<testsuites>
+    <testsuite name="UnitTests">
+        <directory suffix="UnitTest.php" phpVersion="5.4.11" phpVersionOperator=">=">php/tests</directory>
+    </testsuite>
+</testsuites>
+
+<testsuites>
+    <testsuite name="AllTests">
+        <directory suffix="Test.php" phpVersion="5.4.11" phpVersionOperator=">=">php/tests</directory>
+    </testsuite>
+</testsuites>
+
+<filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">php/src</directory>
+        <exclude>
+            <directory suffix=".tpl.php">php/src</directory>
+        </exclude>
+    </whitelist>
+</filter>
+
+<logging>
+    <log type='junit' target='sonar/junit.xml' />
+</logging>
+
+</phpunit>

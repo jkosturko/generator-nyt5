@@ -1,0 +1,98 @@
+{
+    "name": "<%= _.slugify(nytApp) %>",
+    "type": "application",
+    "embed-foundation": true,
+    "cache-version": "",
+    "build-version": "",
+    "sourcePaths": {
+        "js": "js/src",
+        "scss": "scss",
+        "images": "images",
+        "php": "php/src"
+    },
+    "testPaths": {
+        "js": "js/tests",
+        "php": "php/tests"
+    },
+    "prepare": {
+        "js": {
+            "options": {
+                "includeGlobs": ["**/*.js", "**/*.template.html"],
+                "pluckOptions": {
+                    "lowerCasePath": true
+                }
+            }
+        },
+        "scss": {
+            "options": {
+                "includeGlobs": ["**/*.scss"]
+            },
+            "dependencies": [
+                {
+                    "type": "images",
+                    "src": "<%= _.slugify(nytApp) %>",
+                    "dest": ".",
+                    "includeGlobs": ["sprite-me/**"]
+                }
+            ]
+        },
+        "images": {
+            "options": {
+                "includeGlobs": ["**"],
+                "excludeGlobs": ["!**/sprite-me/**"]
+            }
+        },
+        "php": {
+            "options": {
+                "dest": "./<%= _.str.capitalize(nytApp) %>",
+                "includeGlobs": ["**/*.php"]
+            }
+        }
+    },
+    "manifests": {
+        "js": ["main.js"],
+        "scss": [
+            "styles.scss"
+        ],
+        "uglify": ["ad-loader.js"]
+    },
+    "tests": {
+        "js": {
+            "options": {
+                "includeGlobs": ["**"],
+                "pluckOptions": {
+                    "lowerCasePath": true
+                }
+            },
+            "dependencies": [
+                {
+                    "src": "foundation",
+                    "dest": "./foundation",
+                    "sourcePath": "js/src",
+                    "includeGlobs": ["**/*.js"]
+                },
+                {
+                    "src": "foundation",
+                    "dest": "./foundation",
+                    "includeGlobs": ["**/helpers/**"]
+                },
+                {
+                    "src": "shared",
+                    "dest": "./shared"
+                }
+            ]
+        },
+        "php": {
+            "options": {
+                "dest": "./<%= _.str.capitalize(nytApp) %>",
+                "includeGlobs": ["**"]
+            },
+            "dependencies": [
+                {
+                    "src": "shared",
+                    "dest": "./Shared"
+                }
+            ]
+        }
+    }
+}

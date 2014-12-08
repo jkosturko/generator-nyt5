@@ -1,0 +1,20 @@
+{
+    "sampleFeatureFlag": {
+        "environments": {
+            "production": {
+                "on": false
+            },
+            "staging": {
+                "on": false
+            },
+            "development": {
+                "on": true
+            },
+            "sandbox": {
+                "on": true
+            }
+        },
+        "exportToBrowser": false
+    }
+}
+ 

@@ -1,0 +1,14 @@
+default:
+    paths:
+        features: features
+        bootstrap: ../bootstrap
+    filters:
+        tags: @prd-complete
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: ~
+            goutte:
+                guzzle_parameters:
+                    redirect.disable: true
+                    curl.options:
+                        CURLOPT_TIMEOUT: 90
