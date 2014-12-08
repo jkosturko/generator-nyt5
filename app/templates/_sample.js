@@ -10,5 +10,5 @@ define([
 ], function () {
     'use strict';
 
-	consle.log('');
+	console.log('');
 });
