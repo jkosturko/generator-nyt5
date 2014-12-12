@@ -26,6 +26,7 @@ Yeoman travels light. He didn't pack any generators when he moved in. You can th
 To install generator-nyt5 from npm, run:
 
 ```bash
+nyt/nyt5-devtools/generator-nyt5
 npm install -g generator-nyt5
 ```
 
